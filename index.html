@@ -3,10 +3,10 @@
     <head>
         <title>이어살기를 찾아보자 연습입니다</title>
         <meta charset = "utf-8">
-        <link rel = "stylesheet" href = "style.css" >
+        <link rel = "stylesheet" href = "css/style.css" >
     </head>
     <body>
-        <h1><a href="index.html">이어살기 찾아요</a></h1>
+        <h1><a href="views/index.html">이어살기 찾아요</a></h1>
         <div class = "grid">
             <ul id = "first_list"> 
                 <li>위치</li>
@@ -17,8 +17,28 @@
                     <li><a class = "gate">서문</a></li>
                 </ul>
             </ul>
-            <div id = "main_page">
-                <strong>Hello World!</strong>
+            <div class = "main_page">
+                <table class = "list">
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>위치</th>
+                            <th>보증금</th>
+                            <th>월세</th>
+                            <th>작성일</th>
+                            <th>조회</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <div class = "write">
+                    <button onclick="location.href='write.html'">글쓰기</button>
+                </div>
+            </div>
+            <div class = "loign-signup-button">
+                <button onclick="location.href='login.html'">로그인/회원가입</button>
             </div>
         </div>
     </body>

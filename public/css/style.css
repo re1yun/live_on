@@ -1,0 +1,40 @@
+
+h1 {
+    text-align: center;
+    font-weight: 800;
+    font-size: 60px;
+}
+a {
+    text-decoration: none;
+    color:inherit;
+}
+.grid {
+    display: grid;
+    grid-template-columns: 150px 1fr 200px;
+    gap: none;
+}
+#first_list {
+    margin-top: 0;
+    padding-left: 20;
+    border-right: 1px solid black;
+    width:80px;
+}
+.gate {
+    color:black;
+}
+.login-form, .sign-up-form {
+    text-align: center;
+    line-height: 25px;
+}
+.login-signup-button{
+    margin-top: 50px;
+}
+.main_page .login-signup-button{
+    text-align: center;
+}
+.main_page .list{
+    width: 100%;
+}
+.main_page .write{
+    text-align: right;
+}
