@@ -1,0 +1,26 @@
+<h1><a href="/">이어살기 찾아요</a></h1>
+<div class = "write-form">
+    <form method="post">
+
+        <div class="form-group">
+          <label for="title">제목</label>
+          <input type="text" id="title" name="title" value="" class="form-control">
+        </div>
+        
+        <div class="form-group">
+          <label for="body">본문</label>
+          <textarea id="body" name="body" rows="5" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>written by - <% currentUser %> </label>
+            <input type="hidden" name="writtenBy" value = currentUser>
+        </div>
+
+        <div>
+          <a class="btn btn-primary" href="/">뒤로 가기</a>
+          <button type="submit" class="btn btn-primary">제출</button>
+        </div>
+
+      </form>
+</div>

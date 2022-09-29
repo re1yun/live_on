@@ -1,0 +1,31 @@
+<div>
+    <table class="list">
+        <thead>
+            <tr>
+                <th scope = "col">번호</th>
+                <th scope = "col">제목</th>
+                <th scope = "col">위치</th>
+                <th scope = "col">작성일</th>
+                <th scope = "col">조회</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% if(posts == null || posts.length == 0){ %>
+            <tr>
+                <td colspan=2> There is no data to show :( </td>
+            </tr>
+            <% } %>
+            <% posts.forEach(function(post) { %>
+            <tr>
+                <td>
+                <a href="/posts/<%= post._id %>"><div class="ellipsis"><%= post.title %></div></a>
+                </td>
+                <td class="date">
+                <span data-date="<%= post.createdAt %>"></span>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>

@@ -2,9 +2,10 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 var bodyParser = require('body-parser');
-var session = require('express-session');
+//var User = require("./models/user");
+var expressSession = require('express-session');
 var fs = require('fs');
-var User = require('./models/user');
+
 //express setting
 app.set("views", "./views");
 app.set("view engine", "ejs");
@@ -13,7 +14,20 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-const router = require('./router/main')(app, fs, User);
+app.use(
+  expressSession({
+    secret: "my key",
+    resave: true,
+    saveUninitialized: true,
+  })
+)
+
+
+app.use("/", require('./routes/home')(app));
+app.use("/login", require('./routes/login')(app));
+app.use("/sign_up", require('./routes/sign_up')(app));
+app.use("/logout", require('./routes/logout')(app));
+app.use("/write", require('./routes/write')(app));
 
 //DB configuration
 var db = mongoose.connection;

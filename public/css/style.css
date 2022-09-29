@@ -22,9 +22,13 @@ a {
 .gate {
     color:black;
 }
-.login-form, .sign-up-form {
+.login-form, .sign-up-form{
     text-align: center;
     line-height: 25px;
+}
+.input-form{
+    margin-left: auto;
+    margin-right: auto;
 }
 .login-signup-button{
     margin-top: 50px;

@@ -1,4 +1,4 @@
-<h1><a href="views/index.html">이어살기 찾아요</a></h1>
+<h1><a href="/">이어살기 찾아요</a></h1>
 <div class = "grid">
     <ul id = "first_list"> 
         <li>위치</li>
@@ -10,26 +10,16 @@
         </ul>
     </ul>
     <div class = "main_page">
-        <table class = "list">
-            <thead>
-                <tr>
-                    <th>번호</th>
-                    <th>위치</th>
-                    <th>보증금</th>
-                    <th>월세</th>
-                    <th>작성일</th>
-                    <th>조회</th>
-                </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
+        <%- include('post_list.ejs') %>
         <div class = "write">
-            <button onclick="location.href='write.html'">글쓰기</button>
+            <button onclick="location.href='write'">글쓰기</button>
         </div>
     </div>
-    <div class = "loign-signup-button">
-        <button onclick="location.href='/login'">로그인/회원가입</button>
+    <div class = "login-signup-button">
+        <% if(isLogin == false){ %>
+            <button onclick="location.href='login'">로그인/회원가입</button>
+        <% } else { %> 
+            <button onclick="location.href='logout'">로그아웃</button>
+        <% } %> 
     </div>
 </div>

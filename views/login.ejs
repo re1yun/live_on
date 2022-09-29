@@ -1,20 +1,19 @@
-<html>
-  <head>
-    <%-include('header.ejs') %>
-  </head>
-  <body>
-    <h1><a href="/">이어살기 찾아요</a></h1>
-    <div class = "login-form">
-        <form>
-            ID: <br>
-            <input type="text"> <br>
-            PW: <br>
-            <input type="text"> <br>
-        </form>
+<h1><a href="/">이어살기 찾아요</a></h1>
+<div class = "login-form">
+    <form method = "post">
+        <table class = "input-form">
+            <tr>
+                <td><label>ID: </label></td>
+                <td><input type = "text" name = "ID"></td>
+            </tr>    
+            <tr>
+                <td><label>PW: </label></td>
+                <td><input type = "text" name = "PW"></td>
+            </tr>
+        </table>
         <div class = "login-signup-button">
-            <button>로그인</button>
+            <input type = "submit" value = "로그인">
             <button><a href="/sign_up">회원가입</a></button>
         </div>
-    </div>
-</body>
-</html>
+    </form>
+</div>
