@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 var bodyParser = require('body-parser');
-//var User = require("./models/user");
+var methodOverride = require('method-override');
+var passport = require("passport");
 var expressSession = require('express-session');
 var fs = require('fs');
 
@@ -13,6 +14,7 @@ app.engine("html", require("ejs").renderFile);
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride('_method'));
 
 app.use(
   expressSession({
@@ -21,13 +23,18 @@ app.use(
     saveUninitialized: true,
   })
 )
-
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(passport.authenticate('session'));
 
 app.use("/", require('./routes/home')(app));
 app.use("/login", require('./routes/login')(app));
 app.use("/sign_up", require('./routes/sign_up')(app));
 app.use("/logout", require('./routes/logout')(app));
 app.use("/write", require('./routes/write')(app));
+app.use("/post", require('./routes/post')(app));
+app.use("/user", require('./routes/users')(app));
+
 
 //DB configuration
 var db = mongoose.connection;

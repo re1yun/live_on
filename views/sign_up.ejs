@@ -1,17 +1,30 @@
 <h1><a href="/">이어살기 찾아요</a></h1>
 <div class = "sign-up-form">
-    <form method = "post">
+    <form action = "/sign_up" method = "post">
         <table class = "input-form">
             <tr>
-                <td><label>ID: </label></td>
-                <td><input type = "text" name = "ID"></td>
+                <td><label for = "userID">ID: </label></td>
+                <td><input type = "text" name = "userID"></td>
             </tr>    
             <tr>
-                <td><label>PW: </label></td>
-                <td><input type = "text" name = "PW"></td>
+                <td><label for = "name">name: </label></td>
+                <td><input type = "text" name = "name"></td>
+            </tr>
+            <tr>
+                <td><label for = "email">email: </label></td>
+                <td><input type = "text" name = "email"></td>
+            </tr>
+            <tr>
+                <td><label for = "password">PW: </label></td>
+                <td><input type = "text" name = "password"></td>
+            </tr>
+            <tr>
+                <td><label for = "passwordConfirmation">PW confirmation: </label></td>
+                <td><input type = "text" name = "passwordConfirmation"></td>
             </tr>
         </table>
         <div class = "login-signup-button">
+            <a href="/login">뒤로 가기</a>
             <input type = "submit" value = "회원가입">
         </div>
     </form>

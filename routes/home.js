@@ -15,6 +15,7 @@ module.exports = function(app){
                         res.render('index', {
                             title: "main_page",
                             isLogin: true,
+                            currentUser: req.session.user.id,
                             posts:posts
                         })    
                     }else{

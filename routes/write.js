@@ -8,10 +8,14 @@ module.exports = function(app){
     router.route('/')
         .get(function(req, res){
             if(req.session.user){
+                console.log(req.session.user);
                 res.render('index', {
-                    title: 'write',
-                    currentUser: req.session.user.userID
-                })
+                    title: 'post_write',
+                    currentUser: req.session.user.id
+                });
+            }
+            else{
+                res.send("<script>alert('로그인 후 사용할 수 있습니다');location.href='/';</script>");
             }
         })
         .post(function(req, res){

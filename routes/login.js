@@ -1,16 +1,39 @@
 module.exports = function(app){
     var express = require('express');
     var router = express.Router();
+    var passport = require('passport');
+    var LocalStrategy = require('passport-local');
     var User = require('../models/user');
+
+    passport.use('local-login', new LocalStrategy({
+        usernameField: 'ID',
+        passwordField: 'PW',
+        //passReqToCallback: true
+    },
+    function(username, password, done){
+        User.findOne({userID:username})
+            .select({password:1})
+            .exec(function(err, user){
+                if(err) return done(err);
+
+                if(user && user.authenticate(password)){
+                    return done(null, user);
+                }
+                else{
+                    return done(null, false);
+                }
+            });
+    }
+    ));
 
     router.route('/')
         .get(function(req, res){
             if(req.session.user){
-                res.send("<script>alert('로그인 상태 입니다');location.href='/';</script>");
+                res.send("<script>alert('로그인 상태 입니다');location.href=history.back();</script>");
             }
             else{
-                res.render('login', {
-                    title: "이어살기 찾아요 - 로그인"
+                res.render('index', {
+                    title: 'login',
                 })
             }
         })
@@ -26,10 +49,13 @@ module.exports = function(app){
                         pw: req.body.PW,
                         authorized: true
                     };
-                    res.render('index', {
-                        title: "이어살기 찾아요 - 메인",
-                        isLogin: true
-                    })
+                    // res.render('index', {
+                    //     title: "main_page",
+                    //     isLogin: true,
+                    //     posts:posts
+                    // })
+                    //res.redirect('/');
+                    res.send("<script>alert('로그인 성공!');location.href='/';</script>");
                 }
                 if(!result){
                     console.log("no existing user - please sign up");
@@ -37,6 +63,6 @@ module.exports = function(app){
                 }
             })
         })
-        ;
+    ;
     return router;
 };

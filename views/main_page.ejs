@@ -19,6 +19,10 @@
         <% if(isLogin == false){ %>
             <button onclick="location.href='login'">로그인/회원가입</button>
         <% } else { %> 
+            <div>
+                <span>welcome! <%= currentUser %> </span>
+                <button onclick="location.href = 'user/<%= currentUser.userID %>'">회원정보 및 수정</button>
+            </div>
             <button onclick="location.href='logout'">로그아웃</button>
         <% } %> 
     </div>

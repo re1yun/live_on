@@ -8,10 +8,7 @@ module.exports = function(app){
             req.session.destroy(function(){
                 req.session;
             })
-            res.render('index', {
-                title: "이어살기 찾아요 - 메인",
-                isLogin: false
-            })
+            res.send("<script>alert('로그아웃 성공!');location.href='/';</script>");
         }
         else{
             res.send("<script>alert('에러: 로그인 상태가 아닌데요...?');location.href='/';</script>");

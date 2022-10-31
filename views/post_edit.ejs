@@ -1,0 +1,39 @@
+<h1><a href="/">이어살기 찾아요</a></h1>
+<div class = "write-form">
+    <form action = "/post/<%=post._id%>/edit?_method=put" method="post" id = "write-form">
+
+        <div class="form-group">
+          <label for="title">제목</label>
+          <input type="text" id="title" name="title" value="<%= post.title %>" class="form-control">
+        </div>
+        
+        <div class="form-group">
+          <label for="body">본문</label>
+          <textarea id="body" name="body" rows="5" class="form-control"><%= post.body %></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="location">위치</label>
+          <select name = "location" form = "write-form" > 
+            <option <% if(post.location === '북문') {%> selected <% } %>>북문</option>   
+            <option <% if(post.location === '정문') {%> selected <% } %>>정문</option>
+            <option <% if(post.location === '쪽문') {%> selected <% } %>>쪽문</option>
+            <option <% if(post.location === '서문') {%> selected <% } %>>서문</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+            <label>written by - <%=currentUser%> </label>
+            <input type="hidden" name="writtenBy" value = <%=currentUser%>>
+        </div>
+
+        <div>
+          <a href="/post/<%= post._id %>">뒤로 가기</a>
+          <button type="submit">제출</button>
+        </div>
+        
+    </form>
+    <form action="/post/<%= post._id %>?_method=delete" method="post">
+      <button type="submit" onclick="return confirm('정말 삭제하시겠습니까?');">삭제하기</button>
+    </form>
+</div>

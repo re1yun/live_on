@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var postSchema = new Schema({
     title:{type:String, required:true},
     body:{type:String, required:true},
+    location:{type:String, required:true},
     writtenBy:{type:String, required:true},
     createdAt:{type:Date, default:Date.now},
     updatedAt:{type:Date}
